@@ -36,7 +36,7 @@ export class GitHub implements GitOperations {
     });
 
     if (response.status !== 201) {
-      const message = JSON.parse(await response.text()).message;
+      const message = await response.text();
       throw new MergeError(message);
     }
   }

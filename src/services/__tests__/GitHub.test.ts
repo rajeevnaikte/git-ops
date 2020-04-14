@@ -24,7 +24,7 @@ describe('GitHub', () => {
 
     test('fail', async () => {
       setResponse(new MockFetchResponse(409, '{ "message": "conflict" }'));
-      await expect(gitOps.merge('from', 'to')).rejects.toEqual(new MergeError('conflict'));
+      await expect(gitOps.merge('from', 'to')).rejects.toEqual(new MergeError('{ "message": "conflict" }'));
     });
   });
 });
