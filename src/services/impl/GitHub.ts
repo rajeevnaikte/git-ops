@@ -35,8 +35,14 @@ export class GitHub implements GitOperations {
       })
     });
 
-    if (response.status !== 201) {
-      const message = await response.text();
+    if (response.status === 201) {
+      console.log(`Merged ${from} into ${to}.`);
+    }
+    else if (response.status === 204) {
+        console.log(`Noting to merge. ${to} is up-to-date with ${from}.`);
+    }
+    else {
+      const message = JSON.parse(await response.text()).message;
       throw new MergeError(message);
     }
   }

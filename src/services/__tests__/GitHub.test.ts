@@ -16,15 +16,29 @@ describe('GitHub', () => {
     expect(gitOps.repoName).toEqual('dummy/repo');
   });
 
+  const logs: string[] = [];
+  console.log = (message: string) => {
+    logs.push(message);
+  };
+
   describe('merge', () => {
     test('success', async () => {
       setResponse(new MockFetchResponse(201, '{ "sha": "12345" }'));
       await expect(gitOps.merge('from', 'to')).resolves.toBeUndefined();
+      expect(logs).toEqual(['Merged from into to.']);
+      logs.splice(0);
     });
 
     test('fail', async () => {
       setResponse(new MockFetchResponse(409, '{ "message": "conflict" }'));
-      await expect(gitOps.merge('from', 'to')).rejects.toEqual(new MergeError('{ "message": "conflict" }'));
+      await expect(gitOps.merge('from', 'to')).rejects.toEqual(new MergeError('conflict'));
+    });
+
+    test('nothing to merge', async () => {
+      setResponse(new MockFetchResponse(204, ''));
+      await expect(gitOps.merge('from', 'to')).resolves.toBeUndefined();
+      expect(logs).toEqual(['Noting to merge. to is up-to-date with from.']);
+      logs.splice(0);
     });
   });
 });
