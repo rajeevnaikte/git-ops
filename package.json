@@ -1,5 +1,5 @@
 {
-  "name": "git-ops",
+  "name": "squid-git-ops",
   "version": "1.0.0",
   "description": "Git operations on various git vendors",
   "main": "lib/index.js",
