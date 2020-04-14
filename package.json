@@ -1,7 +1,7 @@
 {
-  "name": "node-template",
+  "name": "git-ops",
   "version": "1.0.0",
-  "description": "Template repo for NodeJS projects",
+  "description": "Git operations on various git vendors",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -16,17 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rajeevnaikte/node-template.git"
+    "url": "git+https://github.com/rajeevnaikte/git-ops.git"
   },
   "keywords": [
-    "template"
+    "git operations"
   ],
   "author": "Rajeev N",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rajeevnaikte/node-template/issues"
+    "url": "https://github.com/rajeevnaikte/git-ops/issues"
   },
-  "homepage": "https://github.com/rajeevnaikte/node-template#readme",
+  "homepage": "https://github.com/rajeevnaikte/git-ops#readme",
   "dependencies": {
     "node-fetch": "^2.6.0",
     "squid-utils": "^1.1.0"
